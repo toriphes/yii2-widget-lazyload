@@ -45,6 +45,16 @@ class LazyLoad extends Widget
      * @var string $cssClass the css class to be applied to each img tag
      */
     public $cssClass = 'lazy';
+    
+    /**
+     * @var string $width the width to be applied to each img tag
+     */
+    public $width;
+    
+    /**
+     * @var string $height the height to be applied to each img tag
+     */
+    public $height;
 
     /**
      * @var bool $fallback if you want to support non JavaScript users
@@ -73,7 +83,11 @@ class LazyLoad extends Widget
         if(isset($this->options['src'])) {
             unset($this->options['src']);
         }
-
+        
+        $this->options['width'] = $this->width;
+        $this->options['height'] = $this->height;
+        
+        
         $this->registerClientScript();
 
         parent::init();
